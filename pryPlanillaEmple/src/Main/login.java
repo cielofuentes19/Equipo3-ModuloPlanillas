@@ -21,7 +21,6 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         conn = DbConexion.getConnection();
-     
         
     }
 
@@ -52,7 +51,7 @@ public class login extends javax.swing.JFrame {
         mainPanel.setBackground(new java.awt.Color(102, 102, 102));
         mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
 
-        CabLogin.setBackground(new java.awt.Color(51, 51, 255));
+        CabLogin.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("LOGIN");
@@ -98,6 +97,11 @@ public class login extends javax.swing.JFrame {
         });
 
         txtContra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Usuario");
@@ -116,7 +120,7 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(51, 51, 255));
+        btnLogin.setBackground(new java.awt.Color(0, 255, 255));
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.setBorderPainted(false);
@@ -201,6 +205,7 @@ public class login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -227,6 +232,10 @@ public class login extends javax.swing.JFrame {
                 rs = ps.executeQuery();
                 if(rs.next()){
                     JOptionPane.showMessageDialog(null,"Login Successfull");
+                    panelOpciones i = new panelOpciones();
+                    i.setVisible(true);
+                    this.dispose();
+                    
                 } else{
                     JOptionPane.showMessageDialog(null,"Login Failed");
                     txtUser.setText("");
@@ -245,6 +254,10 @@ public class login extends javax.swing.JFrame {
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_dicReloginMouseClicked
+
+    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraActionPerformed
 
     /**
      * @param args the command line arguments

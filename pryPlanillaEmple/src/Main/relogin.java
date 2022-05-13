@@ -45,7 +45,7 @@ public class relogin extends javax.swing.JFrame {
         relogin.setBackground(new java.awt.Color(255, 255, 255));
         relogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
 
-        cabecera.setBackground(new java.awt.Color(0, 0, 255));
+        cabecera.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Recuperar");
