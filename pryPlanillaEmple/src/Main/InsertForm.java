@@ -122,6 +122,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDni.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
@@ -134,6 +139,16 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtNombres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNombres.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
+        txtNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombresKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -141,6 +156,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtApellPa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtApellPa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtApellPa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellPaKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
@@ -148,6 +168,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtApellMa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtApellMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtApellMa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellMaKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
@@ -155,6 +180,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtPais.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPais.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtPais.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPaisKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
@@ -208,6 +238,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtCorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCorreo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
@@ -215,6 +250,11 @@ public class InsertForm extends javax.swing.JFrame {
 
         txtDirec.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDirec.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txtDirec.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDirecKeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
@@ -244,6 +284,7 @@ public class InsertForm extends javax.swing.JFrame {
         btnInsert.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnInsert.setText("Ingresar Nuevo Empleado");
         btnInsert.setBorderPainted(false);
+        btnInsert.setName("botonIngre"); // NOI18N
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsertActionPerformed(evt);
@@ -499,11 +540,37 @@ Noche
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         // TODO add your handling code here:
-        if  (    txtPuesto.getSelectedItem().equals("Seleccione") ||
+        int num= Integer.parseInt(txtCelular.getText());
+        int cont=0;
+        for(int i=1;i<txtCorreo.getText().length();i++)
+        {
+            char a=txtCorreo.getText().charAt(i);
+            if(a=='@'){
+                cont++;
+            }
+            
+        }
+        if  (   txtPuesto.getSelectedItem().equals("Seleccione") ||
                 txtTurno.getSelectedItem().equals("Seleccione") ||
                 txtPuesto.getSelectedItem().equals("Seleccione") ||
-                genero ==""){ 
-            JOptionPane.showMessageDialog(null, "Falta datos por llenar");
+                genero =="" || 
+                txtNombres.getText().isEmpty() ||
+                txtApellMa.getText().isEmpty() || 
+                txtApellPa.getText().isEmpty() || 
+                txtDni.getText().isEmpty() || 
+                txtPais.getText().isEmpty()|| 
+                txtCelular.getText().isEmpty()|| 
+                txtCorreo.getText().isEmpty()|| 
+                txtDirec.getText().isEmpty()|| 
+                txtSueldo.getText().isEmpty()||
+                txtDni.getText().length() <8 ||
+                txtCelular.getText().length() <9 ||
+                num < 900000000 || 
+                num > 999999999 ||
+                cont!=1                 
+                ){ 
+    
+            JOptionPane.showMessageDialog(null, "Falta datos por llenar o datos equivocos (DNI o Numero de celular invalido o correo) ");
         
         }   else{ 
                 int p;
@@ -542,6 +609,12 @@ Noche
         char c=evt.getKeyChar();
         if (c<'0' || c>'9') 
             evt.consume();
+        if (txtDni.getText().length() == 8){
+            evt.consume();
+        } 
+        
+       
+        
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
@@ -549,14 +622,70 @@ Noche
         char c=evt.getKeyChar();
         if (c<'0' || c>'9') 
             evt.consume();
+        if (txtCelular.getText().length() == 9){
+            evt.consume();
+        }
+        
+        
     }//GEN-LAST:event_txtCelularKeyTyped
 
     private void txtSueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if (c<'0' || c>'9') 
+        if ((c<'0' || c>'9') && ( c<'.' || c>'.')) 
             evt.consume();
     }//GEN-LAST:event_txtSueldoKeyTyped
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombresKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z')) 
+            evt.consume();
+    }//GEN-LAST:event_txtNombresKeyTyped
+
+    private void txtApellPaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellPaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z')) 
+            evt.consume();
+    }//GEN-LAST:event_txtApellPaKeyTyped
+
+    private void txtApellMaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellMaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z')) 
+            evt.consume();
+    }//GEN-LAST:event_txtApellMaKeyTyped
+
+    private void txtDirecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDirecKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z')&& ( c<'-' || c>'-')&& ( c<' ' || c>' ') && ( c<'.' || c>'.') && (c<'0' || c>'9')  ) 
+            evt.consume(); 
+        
+    }//GEN-LAST:event_txtDirecKeyTyped
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z')&& (c<'0' || c>'9') && ( c<'-' || c>'-')&& ( c<'@' || c>'@') && ( c<'.' || c>'.')&& ( c<'_' || c>'_')) 
+            evt.consume(); 
+    }//GEN-LAST:event_txtCorreoKeyTyped
+
+    private void txtPaisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaisKeyTyped
+        // TODO add your handling code here:
+         char c=evt.getKeyChar();
+        if ((c<'A' || c>'Z') && ( c<'a' || c>'z') && ( c<' ' || c>' ')) 
+            evt.consume();
+    }//GEN-LAST:event_txtPaisKeyTyped
 
     /**
      * @param args the command line arguments
